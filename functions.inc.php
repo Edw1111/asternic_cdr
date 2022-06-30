@@ -270,20 +270,38 @@ function asternic_getrecords( $MYVARS ,$appconfig) {
             $detail[$campo].= "<td align=right>".$bill_print."</td>\n";
             $detail[$campo].="<td align=right>".$row['ringtime']." "._('secs')."</td>\n";
             $detail[$campo].= "<td style='text-align: center;'>";
-
+            $ringgroups = [8888,350243,9999,875569];
             $pertes = preg_split("/ /",$row['calldate']);
             $partes = preg_split("/-/",$pertes[0]);
             $year   = $partes[0];
             $month  = $partes[1];
             $day    = $partes[2];
-
+            $ringgroups = [8888,350243,9999,875569];
             if($row['disposition']=="NO ANSWER" || $row['disposition']=="FAILED") {
-                $detail[$campo].="<span style='color: red;'>";
+                gettype(dst);
+                if($row['dst']<=999) {
+                   $detail[$campo].="<span style='color: red;'>";
+                   $row[disposition]="Нет ответа";
+                   print_r($result);
+                   }
+                elseif(in_array($row['dst'], $ringgroups)) {
+                   $detail[$campo].="<span style='color: blue;'>";
+                   $row[disposition]="Принят другим оператором";
+                   $row[disposition] = $row[disposition].'(Общая линия)';
+                   #print_r($row);
+                }
+                else {
+                   $row['disposition']= "Нет ответа";
+                   $detail[$campo].="<span style='color: red;'>";
+                }
             } elseif($row['disposition']=="BUSY") {
+                $row[disposition]="Занято";
                 $detail[$campo].="<span style='color: orange;'>";
             } else {
                 $detail[$campo].="<span style='color: green;'>";
+                $row[disposition]="Принят";
             }
+
 
             $detail[$campo].= $row['disposition'];
             $detail[$campo].= "</span></td>";
