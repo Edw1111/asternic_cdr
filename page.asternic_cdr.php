@@ -295,6 +295,7 @@ function asternic_distribution($appconfig) {
     $query.= "FROM asteriskcdrdb.cdr WHERE  substring(dstchannel,1,locate(\"-\",dstchannel,1)-1)<>'' ";
     $query.= "AND calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 ";
     $query.= "HAVING chan1 IN (${appconfig['extension']}) ORDER BY calldate";
+    $query.= "HAVING chan1 IN dstchannel";
 
     //echo $query;
     
@@ -314,7 +315,7 @@ function asternic_distribution($appconfig) {
            $previous_date=$row['fulldate'];
            $distinct_days++;
         }
-        print_r($chan1);
+      
         $next_hour = $row['hour']+1;
         if($next_hour>23) { $next_hour = 0; }
 
