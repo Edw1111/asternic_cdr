@@ -240,7 +240,8 @@ function asternic_getrecords( $MYVARS ,$appconfig) {
             $cont++;
             $disposition = $row['disposition'];
            if(strpos($row['dst'], $check) !== false){
-                print_r($row);
+                preg_match('~/(.*?)@~', $check, $output);
+                print_r('output');
             }
 
             if($gtype=='combined') {
