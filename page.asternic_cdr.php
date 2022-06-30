@@ -526,7 +526,7 @@ function inbound_outbound($type,$appconfig) {
  
     $query = "SELECT substring($chanfield,1,locate(\"-\",$chanfield,length($chanfield)-8)-1) AS chan1,";
     $query.= "billsec,duration,duration-billsec as ringtime,src,dst,calldate,disposition,accountcode FROM asteriskcdrdb.cdr ";
-    $query.= "WHERE calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 ${appconfig['condicionextra']} ";
+    $query.= "WHERE calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 ${appconfig['condicionextra']} AND (dst) !='s' ";
     $query.= "HAVING chan1 in (${appconfig['extension']}) order by null";
 
     $res = $db->query($query);
