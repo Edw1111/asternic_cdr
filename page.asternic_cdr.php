@@ -297,7 +297,7 @@ function asternic_distribution($appconfig) {
     $query.= "HAVING chan1 IN (${appconfig['extension']}) ORDER BY calldate";
 
     //echo $query;
-
+    
     $res = $db->query($query);
 
     if(DB::IsError($res)) {
@@ -314,6 +314,7 @@ function asternic_distribution($appconfig) {
            $previous_date=$row['fulldate'];
            $distinct_days++;
         }
+        print($chan1);
         $next_hour = $row['hour']+1;
         if($next_hour>23) { $next_hour = 0; }
 
