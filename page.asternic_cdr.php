@@ -242,7 +242,7 @@ function asternic_distribution($appconfig) {
     $query.= "billsec, calldate,";
     $query.= "(time_to_sec(calldate)-(hour(calldate)*3600)+billsec)-3600 AS minute, hour(calldate) AS hour,date_format(calldate,'%Y%m%d') AS fulldate ";
     $query.= "FROM asteriskcdrdb.cdr WHERE  substring(channel,1,locate(\"-\",channel,1)-1)<>'' ";
-    $query.= "AND calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 ";
+    $query.= "AND calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 AND (dst) !='s' ";
     $query.= "HAVING chan1 IN (${appconfig['extension']}) ORDER BY calldate";
 
     $res = $db->query($query);
