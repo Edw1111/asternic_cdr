@@ -314,7 +314,7 @@ function asternic_distribution($appconfig) {
            $previous_date=$row['fulldate'];
            $distinct_days++;
         }
-        print($chan1);
+        print_r($chan1);
         $next_hour = $row['hour']+1;
         if($next_hour>23) { $next_hour = 0; }
 
