@@ -1392,7 +1392,7 @@ function asternic_dashboard() {
     $sql="SELECT src,dst,lastapp,substring(channel,1,locate(\"-\",channel,1)-1) AS chan1,  substring(dstchannel,1,locate(\"-\",dstchannel,1)-1) AS chan2, ";
     $sql.="billsec, calldate,j1.dial,j2.dial,if(j1.dial is not null and j2.dial is null,'outbound','') as outbound,if(j1.dial is null and j2.dial is not null,'inbound','') ";
     $sql.="AS inbound FROM asteriskcdrdb.cdr LEFT JOIN asterisk.devices as j2 on substring(dstchannel,1,locate(\"-\",dstchannel,1)-1) = j2.dial ";
-    $sql.="LEFT JOIN asterisk.devices as j1 on substring(channel,1,locate(\"-\",channel,1)-1) = j1.dial WHERE calldate>curdate() and billsec>0 ";
+    $sql.="LEFT JOIN asterisk.devices as j1 on substring(channel,1,locate(\"-\",channel,1)-1) = j1.dial WHERE calldate>curdate() and billsec>0 AND (dst) !='s' ";
     $sql.="HAVING outbound<>'' OR inbound<>'' AND chan2<>'' ORDER BY calldate DESC";
 
     $res = $db->query($query);
