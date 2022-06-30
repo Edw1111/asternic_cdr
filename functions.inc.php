@@ -233,13 +233,13 @@ function asternic_getrecords( $MYVARS ,$appconfig) {
     $ftype = $_REQUEST['type'];
     $fdisplay = $_REQUEST['display'];
     $ftab = $gtype;
-
+    $check= "Local";
     $cont=0;
     while (is_array($row = $res->fetchRow(DB_FETCHMODE_ASSOC))) {
         if (!(substr($row['accountcode'],0,5)=='Local' && $dispo[$row['disposition']]=='BUSY' && $row[9]=='ResetCDR')) {
             $cont++;
             $disposition = $row['disposition'];
-            if ($row['dst'] contains "Local") {
+           if(strpos($row['dst'], $check) !== false){
                 print_r($row);
             }
 
