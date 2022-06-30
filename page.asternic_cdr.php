@@ -293,7 +293,7 @@ function asternic_distribution($appconfig) {
     $query.= "billsec, calldate,";
     $query.= "(time_to_sec(calldate)-(hour(calldate)*3600)+billsec)-3600 AS minute, hour(calldate) AS hour,date_format(calldate,'%Y%m%d') AS fulldate ";
     $query.= "FROM asteriskcdrdb.cdr WHERE  substring(dstchannel,1,locate(\"-\",dstchannel,1)-1)<>'' ";
-    $query.= "AND calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 ";
+    $query.= "AND calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 ND (dst) !='s' ";
     $query.= "HAVING chan1 IN (${appconfig['extension']}) ORDER BY calldate";
     $query.= "HAVING chan1 IN dstchannel";
 
@@ -351,7 +351,7 @@ function asternic_distribution($appconfig) {
     $query = "SELECT hour(calldate) AS hour, count(*) AS count, SUM(billsec) AS seconds FROM asteriskcdrdb.cdr ";
     $query.= "WHERE  substring(dstchannel,1,locate(\"-\",dstchannel,1)-1)<>'' ";
     $query.= "AND calldate >= '${appconfig['start']}' AND calldate <= '${appconfig['end']}' AND (duration-billsec) >=0 ";
-    $query.= "AND ( substring(dstchannel,1,locate(\"-\",dstchannel,1)-1) IN (${appconfig['extension']}) OR substring(channel,1,locate(\"-\",channel,1)-1) IN (${appconfig['extension']})) ";
+    $query.= "AND ( substring(dstchannel,1,locate(\"-\",dstchannel,1)-1) IN (${appconfig['extension']}) OR substring(channel,1,locate(\"-\",channel,1)-1) IN (${appconfig['extension']})) AND (dst) !='s' ";
     $query.= "GROUP BY 1 ORDER BY calldate";
 
     $res = $db->query($query);
@@ -1482,7 +1482,7 @@ function asternic_home($appconfig) {
     $sql.="if(j1.dial is null and j2.dial is not null,'inbound','') AS inbound, ";
     $sql.="if(j1.dial is not null and j2.dial is not null,'internal','') as internal ";
     $sql.="FROM asteriskcdrdb.cdr LEFT JOIN asterisk.devices as j2 on substring(dstchannel,1,locate(\"-\",dstchannel,1)-1) = j2.dial ";
-    $sql.="LEFT JOIN asterisk.devices as j1 on substring(channel,1,locate(\"-\",channel,1)-1) = j1.dial WHERE calldate>curdate() AND billsec>0 AND disposition='ANSWERED' ";
+    $sql.="LEFT JOIN asterisk.devices as j1 on substring(channel,1,locate(\"-\",channel,1)-1) = j1.dial WHERE calldate>curdate() AND billsec>0 AND disposition='ANSWERED' AND (dst) !='s' ";
     $sql.="HAVING (outbound<>'' OR inbound<>'' OR internal<>'') AND chan2<>'' ORDER BY calldate DESC";
 
     $res = $db->query($sql);
