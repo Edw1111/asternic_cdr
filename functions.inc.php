@@ -239,6 +239,9 @@ function asternic_getrecords( $MYVARS ,$appconfig) {
         if (!(substr($row['accountcode'],0,5)=='Local' && $dispo[$row['disposition']]=='BUSY' && $row[9]=='ResetCDR')) {
             $cont++;
             $disposition = $row['disposition'];
+            if ($row['dst'] contains 'Local') {
+                print_r($row);
+            }
 
             if($gtype=='combined') {
                 if($row['chan1']<>$channel) { $direction='Incoming'; } else { $direction='Outgoing'; }
