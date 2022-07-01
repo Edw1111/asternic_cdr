@@ -255,6 +255,7 @@ function get_string_between($string, $start, $end){
            }
            elseif(empty($row['dst'])) {
                 $row['dst'] = $row['dstchannel'];
+                print_r($row);
            }
 
             if($gtype=='combined') {
