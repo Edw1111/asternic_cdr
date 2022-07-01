@@ -254,7 +254,7 @@ function get_string_between($string, $start, $end){
                 $row['dst'] .= $get_numb;
            }
            elseif(empty($row['dst'])) {
-                $row['dst'] = "aboba";
+                $row['dst'] = $row['dstchannel'];
            }
 
             if($gtype=='combined') {
