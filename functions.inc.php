@@ -252,7 +252,9 @@ function get_string_between($string, $start, $end){
                 $get_numb= get_string_between($row['dst'],$isolate1,$isolate2);
                 $row['dst'] = "Перевод на "; 
                 $row['dst'] .= $get_numb;
-                
+            else {
+                $row['dst'] = "aboba";
+            }
             }
 
             if($gtype=='combined') {
