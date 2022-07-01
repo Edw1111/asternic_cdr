@@ -242,12 +242,14 @@ function get_string_between($string, $start, $end){
     $ftab = $gtype;
     $check= "Local";
     $cont=0;
+    $isolate1 = "\"
+    $isolate2 = \"@"
     while (is_array($row = $res->fetchRow(DB_FETCHMODE_ASSOC))) {
         if (!(substr($row['accountcode'],0,5)=='Local' && $dispo[$row['disposition']]=='BUSY' && $row[9]=='ResetCDR')) {
             $cont++;
             $disposition = $row['disposition'];
            if(strpos($row['dst'], $check) !== false){
-                $get_numb= get_string_between($row['dst'],'\',\'@');
+                $get_numb= get_string_between($row['dst'],$isolate1,$isolate2);
                 print_r($get_numb);
             }
 
