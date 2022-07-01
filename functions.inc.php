@@ -249,7 +249,7 @@ function get_string_between($string, $start, $end){
             $cont++;
             $disposition = $row['disposition'];
            if(strpos($row['dst'], $check) !== false){
-                $get_numb= get_string_between($row['dst'],$isolate1,$isolate2);
+                $get_numb= get_string_between($row['dst'],$isolate1,$isolate2) . " Перевод!";
                 $row['dst']= $get_numb;
             }
 
