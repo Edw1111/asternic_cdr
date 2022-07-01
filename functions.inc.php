@@ -252,10 +252,10 @@ function get_string_between($string, $start, $end){
                 $get_numb= get_string_between($row['dst'],$isolate1,$isolate2);
                 $row['dst'] = "Перевод на "; 
                 $row['dst'] .= $get_numb;
-            else {
+           }
+           else {
                 $row['dst'] = "aboba";
-            }
-            }
+           }
 
             if($gtype=='combined') {
                 if($row['chan1']<>$channel) { $direction='Incoming'; } else { $direction='Outgoing'; }
