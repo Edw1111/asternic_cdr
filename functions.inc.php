@@ -247,7 +247,7 @@ function get_string_between($string, $start, $end){
             $cont++;
             $disposition = $row['disposition'];
            if(strpos($row['dst'], $check) !== false){
-                $get_numb= get_string_between($row['dst'],'\','\@')
+                $get_numb= get_string_between($row['dst'],\'\',\'@')
                 print_r($get_numb);
             }
 
