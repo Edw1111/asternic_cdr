@@ -219,13 +219,13 @@ function get_string_between($string, $start, $end){
         $query .= "substring(dstchannel,1,locate(\"-\",dstchannel,length(dstchannel)-8)-1) AS chan2,";
         $query.= "billsec,duration,duration-billsec as ringtime,src,";
         $query.="IF(dst='s',dstchannel,dst) as dst,calldate,disposition,accountcode,recordingfile,uniqueid FROM asteriskcdrdb.cdr ";
-        $query.= "WHERE calldate >= '$start' AND calldate <= '$end' AND (duration-billsec) >=0 $condicionextra ";
+        $query.= "WHERE calldate >= '$start' AND calldate <= '$end' AND (duration-billsec) >=0 $condicionextra AND (dst) !='s' ";
         $query.= "HAVING chan1 IN ('$channel') OR chan2 IN ('$channel') ORDER BY calldate ";
     } else {
         $query = "SELECT substring($chanfield,1,locate(\"-\",$chanfield,length($chanfield)-8)-1) AS chan1,";
         $query.= "billsec,duration,duration-billsec as ringtime,src,";
         $query.="IF(dst='s',dstchannel,dst) as dst,calldate,disposition,accountcode,recordingfile,uniqueid FROM asteriskcdrdb.cdr ";
-        $query.= "WHERE calldate >= '$start' AND calldate <= '$end' AND (duration-billsec) >=0 $condicionextra ";
+        $query.= "WHERE calldate >= '$start' AND calldate <= '$end' AND (duration-billsec) >=0 $condicionextra AND (dst) !='s' ";
         $query.= "HAVING chan1 IN ('$channel') ORDER BY calldate";
     }
 
