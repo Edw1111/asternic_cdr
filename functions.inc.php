@@ -243,7 +243,7 @@ function get_string_between($string, $start, $end){
     $check= "Local";
     $cont=0;
     $isolate1 =  "Local/";
-    $isolate2 = "from";
+    $isolate2 = "@";
     while (is_array($row = $res->fetchRow(DB_FETCHMODE_ASSOC))) {
         if (!(substr($row['accountcode'],0,5)=='Local' && $dispo[$row['disposition']]=='BUSY' && $row[9]=='ResetCDR')) {
             $cont++;
