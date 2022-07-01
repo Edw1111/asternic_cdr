@@ -206,7 +206,14 @@ function asternic_getrecords( $MYVARS ,$appconfig) {
         $chanfield = "dstchannel";
         $otherchanfield = "channel";
     }
-
+function get_string_between($string, $start, $end){
+     $string = ' ' . $string;
+     $ini = strpos($string, $start);
+     if ($ini == 0) return '';
+     $ini += strlen($start);
+     $len = strpos($string, $end, $ini) - $ini;
+     return substr($string, $ini, $len);
+    }
     if($gtype=='combined') {
         $query = "SELECT substring(channel,1,locate(\"-\",channel,length(channel)-8)-1) AS chan1,";
         $query .= "substring(dstchannel,1,locate(\"-\",dstchannel,length(dstchannel)-8)-1) AS chan2,";
@@ -240,8 +247,8 @@ function asternic_getrecords( $MYVARS ,$appconfig) {
             $cont++;
             $disposition = $row['disposition'];
            if(strpos($row['dst'], $check) !== false){
-                preg_match("/\.@/", $check, $output);
-                print_r($output[1]);
+                $get_numb= get_string_between($row['dst'],"\","@")
+                print_r($get_numb);
             }
 
             if($gtype=='combined') {
