@@ -248,12 +248,15 @@ function get_string_between($string, $start, $end){
         if (!(substr($row['accountcode'],0,5)=='Local' && $dispo[$row['disposition']]=='BUSY' && $row[9]=='ResetCDR')) {
             $cont++;
             $disposition = $row['disposition'];
+   
            if(strpos($row['dst'], $check) !== false){
+                continue;
                 $get_numb= get_string_between($row['dst'],$isolate1,$isolate2);
                 $row['dst'] = "Перевод на "; 
                 $row['dst'] .= $get_numb;
            }
            elseif(empty($row['dst'])) {
+                continue;
                 $row['dst'] = $row['dstchannel'];
                 print_r($row);
            }
