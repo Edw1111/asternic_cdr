@@ -253,7 +253,7 @@ function get_string_between($string, $start, $end){
                 $row['dst'] = "Перевод на "; 
                 $row['dst'] .= $get_numb;
            }
-           else {
+           elseif(empty($row['dst'])) {
                 $row['dst'] = "aboba";
            }
 
