@@ -680,7 +680,7 @@ function inbound_outbound($type,$appconfig) {
         $disposition = $row['disposition'];
 
         if(!isset($missed[$row['accountcode']][$row['chan1']])) { $missed[$row['accountcode']][$row['chan1']]=0;}
-        if($disposition<>"ANSWERED" ) {
+        if($disposition<>"ANSWERED" AND $row['dst']< 999) {
             $missed_inbound[$row['accountcode']][$row['chan1']]++;
             $missed[$row['accountcode']][$row['chan1']]++;
         }
