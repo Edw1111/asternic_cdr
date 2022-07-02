@@ -653,7 +653,8 @@ function inbound_outbound($type,$appconfig) {
 
         $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
         $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
-
+        $number_calls_inbound[$row['accountcode']][$row['chan1']]++;
+        $number_calls[$row['accountcode']][$row['chan1']]++;
 
         if(!isset($missed_inbound[$row['accountcode']][$row['chan1']])) { $missed_inbound[$row['accountcode']][$row['chan1']]=0; }
 
@@ -667,8 +668,7 @@ function inbound_outbound($type,$appconfig) {
            $group_ring_inbound[$row['accountcode']]+=$row['ringtime'];
            $group_calls_inbound[$row['accountcode']]++;
            $total_ring_inbound+=$row['ringtime'];
-            $number_calls_inbound[$row['accountcode']][$row['chan1']]++;
-            $number_calls[$row['accountcode']][$row['chan1']]++;
+
         }
        if($row['dst']<999) {
            $total_calls_inbound++;
@@ -676,8 +676,7 @@ function inbound_outbound($type,$appconfig) {
            $group_ring_inbound[$row['accountcode']]+=$row['ringtime'];
            $group_calls_inbound[$row['accountcode']]++;
            $total_ring_inbound+=$row['ringtime'];
-           $number_calls_inbound[$row['accountcode']][$row['chan1']]++;
-           $number_calls[$row['accountcode']][$row['chan1']]++;
+
        }
 
         $disposition = $row['disposition'];
