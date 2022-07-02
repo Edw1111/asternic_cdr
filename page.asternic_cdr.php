@@ -662,7 +662,7 @@ function inbound_outbound($type,$appconfig) {
         $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         $total_bill_inbound+=$row['billsec'];
         $total_ring_inbound+=$row['ringtime'];
-        $total_calls_inbound++;
+        #$total_calls_inbound++;
 
         $group_bill_inbound[$row['accountcode']]+=$row['billsec'];
         $group_ring_inbound[$row['accountcode']]+=$row['ringtime'];
@@ -1084,7 +1084,7 @@ function asternic_report($typereport,$appconfig) {
         $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         $total_bill+=$row['billsec'];
         $total_ring+=$row['ringtime'];
-        #$total_calls++;
+        $total_calls++;
 
         $group_bill[$row['accountcode']]+=$row['billsec'];
         $group_ring[$row['accountcode']]+=$row['ringtime'];
