@@ -1110,7 +1110,7 @@ function asternic_report($typereport,$appconfig) {
 
         $disposition = $row['disposition'];
 
-        if($disposition<>"ANSWERED" ) {
+        if($disposition<>"ANSWERED" AND $row['dst']<999) {
           $missed[$row['accountcode']][$row['chan1']]++;
         }
     }
