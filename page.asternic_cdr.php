@@ -1090,16 +1090,18 @@ function asternic_report($typereport,$appconfig) {
         $number_calls[$row['accountcode']][$row['chan1']]++;
 
         if(!isset($missed[$row['accountcode']][$row['chan1']])) { $missed[$row['accountcode']][$row['chan1']]=0; }
-        $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
+        
         if($row['disposition']=="ANSWERED" AND $row['dst'] > 999 ) {
            $total_calls++;
            $total_bill+=$row['billsec'];
            $total_ring+=$row['ringtime'];
+           $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         }
         if($row['dst'] < 999 ) {
            $total_calls++;
            $total_bill+=$row['billsec'];
            $total_ring+=$row['ringtime'];
+           $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         }
 
         $group_bill[$row['accountcode']]+=$row['billsec'];
