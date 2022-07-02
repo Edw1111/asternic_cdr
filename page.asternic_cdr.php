@@ -861,7 +861,7 @@ if($total_calls>0) {
                 $nomuser=$appconfig['canals'][$chan];
 
                 $nomissed = $number_calls[$idx][$chan] - $missed[$idx][$chan];
-                print_r($nomissed);
+                echo '<pre>'; print_r($nomissed);  echo '</pre>';
                 $yesmissed   = $missed[$idx][$chan];
                 $query1 .= "valA$contavar=$nomissed&valB$contavar=$yesmissed&var$contavar=$nomuser&";
                 $query2 .= "val$contavar=".$val."&var$contavar=$nomuser&";
