@@ -661,13 +661,21 @@ function inbound_outbound($type,$appconfig) {
         $ringing_inbound[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         $total_bill_inbound+=$row['billsec'];
-        $total_ring_inbound+=$row['ringtime'];
-        if($row['disposition']=="ANSWERED") {
+       
+        if($row['disposition']=="ANSWERED" AND $row['dst'>999]) {
            $total_calls_inbound++;
+           $group_bill_inbound[$row['accountcode']]+=$row['billsec'];
+           $group_ring_inbound[$row['accountcode']]+=$row['ringtime'];
+           $group_calls_inbound[$row['accountcode']]++;
+           $total_ring_inbound+=$row['ringtime'];
         }
-        $group_bill_inbound[$row['accountcode']]+=$row['billsec'];
-        $group_ring_inbound[$row['accountcode']]+=$row['ringtime'];
-        $group_calls_inbound[$row['accountcode']]++;
+       if($row['dst']<999) {
+           $total_calls_inbound++;
+           $group_bill_inbound[$row['accountcode']]+=$row['billsec'];
+           $group_ring_inbound[$row['accountcode']]+=$row['ringtime'];
+           $group_calls_inbound[$row['accountcode']]++;
+           $total_ring_inbound+=$row['ringtime'];
+       }
 
         $disposition = $row['disposition'];
 
