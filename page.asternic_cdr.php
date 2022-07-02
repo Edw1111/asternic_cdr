@@ -1085,7 +1085,10 @@ function asternic_report($typereport,$appconfig) {
         $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         $total_bill+=$row['billsec'];
         $total_ring+=$row['ringtime'];
-        if($row['disposition']=="ANSWERED") {
+        if($row['disposition']=="ANSWERED" AND $row['dst'] > 999 ) {
+           $total_calls++;
+        }
+        if($row['dst'] < 999 ) {
            $total_calls++;
         }
 
