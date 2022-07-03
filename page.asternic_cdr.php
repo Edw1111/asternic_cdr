@@ -1096,10 +1096,10 @@ function asternic_report($typereport,$appconfig) {
         if($row['disposition']=="ANSWERED" AND in_array($row['dst'], $ringgroups)) {
            $number_calls[$row['accountcode']][$row['chan1']]++;
         }
-        if(in_array($row['dst'], $ringgroups) AND $row['src'] > 999 AND $row['disposition'] =="ANSWERED") {
-           $number_calls[$row['accountcode']][$row['chan1']]++;
+        #if(in_array($row['dst'], $ringgroups) AND $row['src'] > 999 AND $row['disposition'] =="ANSWERED") {
+        #   $number_calls[$row['accountcode']][$row['chan1']]++;
 
-        }
+       # }
         if(!isset($missed[$row['accountcode']][$row['chan1']])) { $missed[$row['accountcode']][$row['chan1']]=0; }
         
         if($row['disposition']=="ANSWERED" AND $row['dst'] > 999 ) {
