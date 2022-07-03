@@ -1278,7 +1278,7 @@ if($total_calls>0) {
                 if($cual>0) { $odd = " class='odd' "; } else { $odd = ""; }
 
                 $nomuser=$appconfig['canals'][$chan];
-                $nomissed = 0 #$number_calls[$idx][$chan] - $missed[$idx][$chan];
+                $nomissed = 0; #$number_calls[$idx][$chan] - $missed[$idx][$chan];
                 $yesmissed   = $missed[$idx][$chan];
                 $query1 .= "valA$contavar=$nomissed&valB$contavar=$yesmissed&var$contavar=$nomuser&";
                 $query2 .= "val$contavar=".$val."&var$contavar=$nomuser&";
