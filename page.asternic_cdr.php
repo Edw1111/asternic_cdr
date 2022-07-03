@@ -662,7 +662,7 @@ function inbound_outbound($type,$appconfig) {
         $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         $total_bill_inbound+=$row['billsec'];
        
-        if($row['disposition']=="ANSWERED" AND $row['dst'>999]) {
+        if($row['disposition']=="ANSWERED" AND $row['dst'] > 999) {
            $total_calls_inbound++;
            $group_bill_inbound[$row['accountcode']]+=$row['billsec'];
            $group_ring_inbound[$row['accountcode']]+=$row['ringtime'];
