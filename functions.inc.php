@@ -291,7 +291,6 @@ function get_string_between($string, $start, $end){
             $detail[$campo].= "<td align=right>".$bill_print."</td>\n";
             $detail[$campo].="<td align=right>".$row['ringtime']." "._('secs')."</td>\n";
             $detail[$campo].= "<td style='text-align: center;'>";
-            $ringgroups = [8888,350243,9999,875569];
             $pertes = preg_split("/ /",$row['calldate']);
             $partes = preg_split("/-/",$pertes[0]);
             $year   = $partes[0];
