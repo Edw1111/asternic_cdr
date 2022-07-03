@@ -1089,8 +1089,9 @@ function asternic_report($typereport,$appconfig) {
 
         $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
         $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
+        if($row[$dst] < 999 ){
         $number_calls[$row['accountcode']][$row['chan1']]++;
-
+        }
         if(!isset($missed[$row['accountcode']][$row['chan1']])) { $missed[$row['accountcode']][$row['chan1']]=0; }
         
         if($row['disposition']=="ANSWERED" AND $row['dst'] > 999 ) {
@@ -1278,7 +1279,7 @@ if($total_calls>0) {
                 if($cual>0) { $odd = " class='odd' "; } else { $odd = ""; }
 
                 $nomuser=$appconfig['canals'][$chan];
-                $nomissed = 0; #$number_calls[$idx][$chan] - $missed[$idx][$chan];
+                $nomissed =  $number_calls[$idx][$chan] - $missed[$idx][$chan];
                 $yesmissed   = $missed[$idx][$chan];
                 $query1 .= "valA$contavar=$nomissed&valB$contavar=$yesmissed&var$contavar=$nomuser&";
                 $query2 .= "val$contavar=".$val."&var$contavar=$nomuser&";
