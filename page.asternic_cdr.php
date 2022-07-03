@@ -1098,7 +1098,7 @@ function asternic_report($typereport,$appconfig) {
            echo '<pre>'; print_r($row['disposition']);  echo '</pre>';
            $number_calls[$row['accountcode']][$row['chan1']]++;
         }
-        if($row['src'] < 999) {
+        if($row['src'] < 999 AND $row['disposition' == "ANSWERED" AND $row['dst'] > 999 ]) {
            $number_calls[$row['accountcode']][$row['chan1']]++;
         }
         if(!isset($missed[$row['accountcode']][$row['chan1']])) { $missed[$row['accountcode']][$row['chan1']]=0; }
