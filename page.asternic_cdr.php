@@ -1089,7 +1089,6 @@ function asternic_report($typereport,$appconfig) {
 
         $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
         $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
-{
         if($row['dst'] < 999 ) {
            #echo '<pre>'; print_r($row['dst']);  echo '</pre>';
            $number_calls[$row['accountcode']][$row['chan1']]++;
