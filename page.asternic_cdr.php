@@ -1119,7 +1119,7 @@ function asternic_report($typereport,$appconfig) {
 
         $group_bill[$row['accountcode']]+=$row['billsec'];
         $group_ring[$row['accountcode']]+=$row['ringtime'];
-        #$group_calls[$row['accountcode']]++;
+        $group_calls[$row['accountcode']]++;
 
         $disposition = $row['disposition'];
 
