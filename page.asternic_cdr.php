@@ -1089,11 +1089,11 @@ function asternic_report($typereport,$appconfig) {
         $ringgroups = [8888,350243,9999,875569];
         $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
         $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
-        if(!in_array($row['dst'], $ringgroups)) {
+        if(!in_array($row['dst'], $ringgroups) AND $row['dst'] !="s") {
            #echo '<pre>'; print_r($row['dst']);  echo '</pre>';
            $number_calls[$row['accountcode']][$row['chan1']]++;
         }
-        if($row['disposition']=="ANSWERED" AND in_array($row['dst'], $ringgroups)) {
+        if($row['disposition']=="ANSWERED" AND in_array($row['dst'], $ringgroups) AND $row['dst'] !="s") {
            $number_calls[$row['accountcode']][$row['chan1']]++;
         }
         #if(in_array($row['dst'], $ringgroups) AND $row['src'] > 999 AND $row['disposition'] =="ANSWERED") {
