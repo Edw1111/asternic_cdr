@@ -574,8 +574,8 @@ function inbound_outbound($type,$appconfig) {
 
         $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
         $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
-        #$number_calls_outbound[$row['accountcode']][$row['chan1']]++;
-        $number_calls[$row['accountcode']][$row['chan1']]++;
+        $number_calls_outbound[$row['accountcode']][$row['chan1']]++;
+       # $number_calls[$row['accountcode']][$row['chan1']]++;
 
         if(!isset($missed_outbound[$row['accountcode']][$row['chan1']])) { $missed_outbound[$row['accountcode']][$row['chan1']]=0; }
 
