@@ -748,7 +748,7 @@ function inbound_outbound($type,$appconfig) {
                 <tbody>
                 <tr> 
                   <td><?php echo _('Number of Calls')?>:</td>
-                  <td><?php echo $total_calls_inbound?> <?php echo _('calls')?></td>
+                  <td><?php echo $total_calls?> <?php echo _('calls')?></td>
                 </tr>
                 <tr>
                   <td><?php echo _('Total Time')?>:</td>
@@ -1104,13 +1104,13 @@ function asternic_report($typereport,$appconfig) {
        # }
         if(!isset($missed[$row['accountcode']][$row['chan1']])) { $missed[$row['accountcode']][$row['chan1']]=0; }
         
-        if($row['disposition']=="ANSWERED" AND $row['dst'] > 999 ) {
+        if($row['disposition']=="ANSWERED" AND $row['dst'] > 999 AND $row['dst'] != "s" ) {
            $total_calls++;
            $total_bill+=$row['billsec'];
            $total_ring+=$row['ringtime'];
            $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         }
-        if($row['dst'] < 999 ) {
+        if($row['dst'] < 999 AND $row['dst'] != "s" ) {
            $total_calls++;
            $total_bill+=$row['billsec'];
            $total_ring+=$row['ringtime'];
@@ -1123,7 +1123,7 @@ function asternic_report($typereport,$appconfig) {
 
         $disposition = $row['disposition'];
 
-        if($disposition<>"ANSWERED" AND $row['dst']<999) {
+        if($disposition<>"ANSWERED" AND $row['dst']<999 AND $row['dst'] != "s" ) {
           $missed[$row['accountcode']][$row['chan1']]++;
         }
     }
