@@ -583,7 +583,9 @@ function inbound_outbound($type,$appconfig) {
         $ringing_outbound[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
         $total_bill_outbound+=$row['billsec'];
         $total_ring_outbound+=$row['ringtime'];
-        $total_calls_outbound++;
+        if($row['dst'] != "s") {
+            $total_calls_outbound++;
+        }
 
         $group_bill_outbound[$row['accountcode']]+=$row['billsec'];
         $group_ring_outbound[$row['accountcode']]+=$row['ringtime'];
