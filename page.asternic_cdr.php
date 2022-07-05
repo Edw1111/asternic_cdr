@@ -748,7 +748,7 @@ function inbound_outbound($type,$appconfig) {
                 <tbody>
                 <tr> 
                   <td><?php echo _('Number of Calls')?>:</td>
-                  <td><?php echo $total_calls?> <?php echo _('calls')?></td>
+                  <td><?php echo $total_calls_inbound?> <?php echo _('calls')?></td>
                 </tr>
                 <tr>
                   <td><?php echo _('Total Time')?>:</td>
