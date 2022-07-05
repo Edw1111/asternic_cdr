@@ -1089,7 +1089,7 @@ function asternic_report($typereport,$appconfig) {
             $number_in_calls[$row['accountcode']][$row['chan1']]=0;
         }
         $ringgroups = [8888,350243,9999,875569];
-        $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
+        #$billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
         $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
         if(!in_array($row['dst'], $ringgroups) AND $row['dst'] !="s") {
            #echo '<pre>'; print_r($row['dst']);  echo '</pre>';
@@ -1106,7 +1106,7 @@ function asternic_report($typereport,$appconfig) {
         
         if($row['disposition']=="ANSWERED" AND $row['dst'] > 999 AND $row['dst'] != "s" ) {
            $total_calls++;
-           #$total_bill+=$row['billsec'];
+           $total_bill+=$row['billsec'];
            $total_ring+=$row['ringtime'];
            $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
            $group_bill[$row['accountcode']]+=$row['billsec'];
@@ -1115,7 +1115,7 @@ function asternic_report($typereport,$appconfig) {
         }
         if($row['dst'] < 999 AND $row['dst'] != "s" ) {
            $total_calls++;
-           #$total_bill+=$row['billsec'];
+           $total_bill+=$row['billsec'];
            $total_ring+=$row['ringtime'];
            $ringing[$row['accountcode']][$row['chan1']]+=$row['ringtime'];
            $group_bill[$row['accountcode']]+=$row['billsec'];
