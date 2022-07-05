@@ -589,7 +589,7 @@ function inbound_outbound($type,$appconfig) {
 
         $group_bill_outbound[$row['accountcode']]+=$row['billsec'];
         $group_ring_outbound[$row['accountcode']]+=$row['ringtime'];
-        $group_calls_outbound[$row['accountcode']]++;
+        #$group_calls_outbound[$row['accountcode']]++;
 
         $disposition = $row['disposition'];
 
