@@ -1112,6 +1112,7 @@ function asternic_report($typereport,$appconfig) {
            $group_calls[$row['accountcode']]++;
            $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
            $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
+           $number_calls[$row['accountcode']][$row['chan1']]++;
         }
         if($row['dst'] < 999 AND $row['dst'] != "s" ) {
            $total_calls++;
@@ -1123,6 +1124,7 @@ function asternic_report($typereport,$appconfig) {
            $group_calls[$row['accountcode']]++;
            $billsec[$row['accountcode']][$row['chan1']]  += $row['billsec'];
            $duration[$row['accountcode']][$row['chan1']] += $row['duration'];
+           $number_calls[$row['accountcode']][$row['chan1']]++;
         }
 
 
