@@ -1131,6 +1131,7 @@ function asternic_report($typereport,$appconfig) {
         if($disposition<>"ANSWERED" AND $row['dst']<999 AND $row['dst'] != "s" ) {
           $missed[$row['accountcode']][$row['chan1']]++;
           $group_ring[$row['accountcode']]+=$row['ringtime'];
+          $total_calls++;
         }
     }
 
