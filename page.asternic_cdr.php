@@ -1095,7 +1095,6 @@ function asternic_report($typereport,$appconfig) {
         }
         if($row['disposition']=="ANSWERED" AND in_array($row['dst'], $ringgroups) AND $row['dst'] !="s") {
            $number_calls[$row['accountcode']][$row['chan1']]++;
-           $total_calls++;
         }
         #if(in_array($row['dst'], $ringgroups) AND $row['src'] > 999 AND $row['disposition'] =="ANSWERED") {
         #    $total_calls++;
